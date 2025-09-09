@@ -1,0 +1,137 @@
+/* Jeopardy Game Styles - Designed for Dimension template */
+.jeopardy-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.jeopardy-category {
+    background: #2c5364;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.jeopardy-question {
+    background: #1a535c;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.jeopardy-question:hover {
+    background: #2a9d8f;
+}
+
+.jeopardy-question.used {
+    background: #333;
+    cursor: default;
+    opacity: 0.5;
+}
+
+.jeopardy-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.jeopardy-modal-content {
+    background: #1a535c;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 80%;
+    position: relative;
+    border: 2px solid #4fc3f7;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
+}
+
+.jeopardy-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.jeopardy-close:hover {
+    color: #4fc3f7;
+}
+
+.jeopardy-score {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#jeopardyReset {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #4fc3f7;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+#jeopardyReset:hover {
+    background: #2a9d8f;
+}
+
+.jeopardy-instructions {
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 736px) {
+    .jeopardy-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .jeopardy-question {
+        min-height: 60px;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .jeopardy-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .jeopardy-modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
