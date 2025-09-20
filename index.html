@@ -4,48 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Shmoonly</title>
+    <title>Shmooniverse</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <style>
-        /* Smooth scrollbar animation */
-        html {
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
-            overflow-y: scroll;
-        }
-        
-        /* For Webkit browsers (Chrome, Safari) */
-        ::-webkit-scrollbar {
-            width: 10px;
-            background-color: transparent;
-            transition: all 0.3s ease;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-        
-        /* For Firefox */
-        html {
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
-        }
-        
-        /* Smooth page transitions */
-        body {
-            scroll-behavior: smooth;
-        }
-
         .portfolio-item a {
             color: lightblue;
             text-decoration: none;
-            transition: color 0.3s ease;
         }
 
         .portfolio-item a:hover {
@@ -56,12 +20,6 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .image.main img:hover {
-            transform: scale(1.01);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         body,
@@ -75,25 +33,21 @@
 
         article {
             margin-bottom: 40px;
-            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         h2.major {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            transition: color 0.3s ease;
         }
 
         h3 {
             font-size: 1.8rem;
             margin-top: 20px;
-            transition: color 0.3s ease;
         }
 
         p {
             font-size: 1rem;
             line-height: 1.6;
-            transition: color 0.3s ease;
         }
 
         ul {
@@ -103,154 +57,93 @@
         li {
             font-size: 1rem;
             line-height: 1.6;
-            transition: color 0.3s ease;
-        }
-
-        /* Smooth navigation transitions */
-        nav ul li a {
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            transform: translateY(-2px);
         }
         
-        /* Jeopardy-specific styles */
-        .jeopardy-board {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
+        /* GeoGuesser Styles */
+        #geoguesser {
+            text-align: center;
+        }
+        
+        .game-container {
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 20px;
             margin: 20px 0;
         }
         
-        .jeopardy-category {
-            background: #2c5364;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .jeopardy-question {
-            background: #1a535c;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer;
-            min-height: 80px;
+        .map-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: #2a2a2a;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s ease;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .jeopardy-question:hover {
-            background: #2a9d8f;
-        }
-        
-        .jeopardy-question.used {
-            background: #333;
-            cursor: default;
-            opacity: 0.5;
-        }
-        
-        .jeopardy-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .jeopardy-modal-content {
-            background: #1a535c;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 600px;
-            width: 80%;
-            position: relative;
-            border: 2px solid #4fc3f7;
-            box-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
-        }
-        
-        .jeopardy-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-            transition: color 0.3s ease;
-        }
-        
-        .jeopardy-close:hover {
-            color: #4fc3f7;
-        }
-        
-        .jeopardy-score {
-            text-align: center;
-            font-size: 1.5rem;
-            margin: 20px 0;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        
-        #jeopardyReset {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background: #4fc3f7;
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        
-        #jeopardyReset:hover {
-            background: #2a9d8f;
-        }
-        
-        .jeopardy-instructions {
-            text-align: center;
-            margin-bottom: 20px;
+            color: #ccc;
             font-style: italic;
-            opacity: 0.8;
+            background-size: cover;
+            background-position: center;
         }
         
-        /* Responsive adjustments */
-        @media screen and (max-width: 736px) {
-            .jeopardy-board {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .jeopardy-question {
-                min-height: 60px;
-                font-size: 1.2rem;
-            }
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
         }
-
-        @media screen and (max-width: 480px) {
-            .jeopardy-board {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .jeopardy-modal-content {
-                width: 95%;
-                padding: 20px;
-            }
+        
+        .option-btn {
+            background-color: #3a3a5a;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .option-btn:hover {
+            background-color: #4a4a7a;
+        }
+        
+        .score-display {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+        
+        .game-controls {
+            margin: 20px 0;
+        }
+        
+        .control-btn {
+            background-color: #4a7a5a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .control-btn:hover {
+            background-color: #5a9a6a;
+        }
+        
+        .result-message {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            min-height: 30px;
+        }
+        
+        .correct {
+            color: #7aff7a;
+        }
+        
+        .incorrect {
+            color: #ff7a7a;
         }
     </style>
 </head>
@@ -265,15 +158,15 @@
             <div></div>
             <div class="content">
                 <div class="inner">
-                    <h1>Shmoonly</h1>
-                    <p>"I like this starry sky."</p>
+                    <h1>Shmooniverse</h1>
+                    <p>"Where creativity meets the cosmos."</p>
                 </div>
             </div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#portfolios">Portfolios</a></li>
-                    <li><a href="#jeopardy">Jeopardy</a></li>
+                    <li><a href="#geoguesser">GeoGuesser</a></li>
                     <li><a href="#aboutme">About Me</a></li>
                 </ul>
             </nav>
@@ -286,107 +179,85 @@
             <article id="home">
                 <h2 class="major">Home</h2>
                 <span class="image main"><img src="images/pic01.jpg" alt="Home Image" /></span>
-                <p>Hello there, enjoy your stay.</p>
-                <!--<h3>Purpose</h3>
-                <p>The purpose of this website is not only to share my work but also to inspire and connect with like-minded individuals who are passionate about technology and creativity. Whether you're a fellow IT enthusiast, a potential collaborator, or simply curious, there's something here for everyone.</p> -->
+                <p>Welcome to Shmooniverse, your gateway to exploring my journey in the universe of IT. This site serves as a digital portfolio showcasing my projects, skills, and progress as a BSIT student.</p>
+                <h3>Purpose</h3>
+                <p>The purpose of this website is not only to share my work but also to inspire and connect with like-minded individuals who are passionate about technology and creativity. Whether you're a fellow IT enthusiast, a potential collaborator, or simply curious, there's something here for everyone.</p>
             </article>
 
             <!-- Portfolios Section -->
             <article id="portfolios">
                 <h2 class="major">Portfolios</h2>
-                <!-- <span class="image main"><img src="images" alt="Portfolio Image" /></span> -->
+                <span class="image main"><img src="images/pic02.png" alt="Portfolio Image" /></span>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <a href="https://youtu.be/dQw4w9WgXcQ?si=GSkmpgysDM1HKCfA" target="_blank">Computer Science as a Discipline</a>
+                        <a href="https://drive.google.com/file/d/1O-UvEFdP9skiX4qGg8UB81eR5P84i9vo/view?usp=drive_link" target="_blank">Computer Science as a Discipline</a>
                         <p>Portfolio 1</p>
                     </div>
                     <div class="portfolio-item">
-                        <a href="https://youtu.be/dQw4w9WgXcQ?si=GSkmpgysDM1HKCfA" target="_blank">Data and Information</a>
+                        <a href="https://drive.google.com/file/d/1UGwih0qpv3LxWFi9F8lVP2XUHNX88c8h/view?usp=drive_link" target="_blank">Data and Information</a>
                         <p>Portfolio 2</p>
                     </div>
                     <div class="portfolio-item">
-                        <a href="https://youtu.be/dQw4w9WgXcQ?si=GSkmpgysDM1HKCfA" target="_blank">Number Systems</a>
+                        <a href="https://drive.google.com/file/d/1IYX4sbyS0xqtIlIJOOf4IAfSl7rReJCI/view?usp=drive_link" target="_blank">Number Systems</a>
                         <p>Portfolio 3</p>
                     </div>
                     <div class="portfolio-item">
-                        <a href="https://youtu.be/dQw4w9WgXcQ?si=GSkmpgysDM1HKCfA" target="_blank">Computer Hardware and Software</a>
+                        <a href="https://drive.google.com/file/d/1Bp91x2UxCBjKQ86kdEm5Rbn9YVoFIbH4/view?usp=drive_link" target="_blank">Computer Hardware and Software</a>
                         <p>Portfolio 4</p>
                     </div>
                     <div class="portfolio-item">
-                        <a href="https://youtu.be/dQw4w9WgXcQ?si=GSkmpgysDM1HKCfA" target="_blank">Comparative Study on Different Types of Motherboards</a>
+                        <a href="https://drive.google.com/file/d/1ttu4E-gEKbKFfBjx-gy1iVp1znYBp4if/view?usp=drive_link" target="_blank">Comparative Study on Different Types of Motherboards</a>
                         <p>Portfolio 5</p>
                     </div>
                     <div class="portfolio-item">
-                        <a href="https://youtu.be/dQw4w9WgXcQ?si=GSkmpgysDM1HKCfA" target="_blank">Comparative Study on Different Types of Computers</a>
+                        <a href="https://drive.google.com/file/d/1soUtv1kz4_C7asYamX3RaRBY10xa6mZt/view?usp=drive_link" target="_blank">Comparative Study on Different Types of Computers</a>
                         <p>Portfolio 6</p>
                     </div>
                 </div>
             </article>
-
-            <!-- Jeopardy Section -->
-            <article id="jeopardy">
-                <h2 class="major">Jeopardy</h2>
-                <p class="jeopardy-instructions">Test your knowledge with this IT-themed Jeopardy game! Click on a question to reveal the answer.</p>
+            
+            <!-- GeoGuesser Section -->
+            <article id="geoguesser">
+                <h2 class="major">GeoGuesser</h2>
+                <span class="image main"><img src="images/pic02.png" alt="GeoGuesser Image" /></span>
+                <p>Test your geography knowledge with this interactive GeoGuesser game! Try to identify the location based on the clues.</p>
                 
-                <div class="jeopardy-score">Score: <span id="score">0</span></div>
-                
-                <div class="jeopardy-board">
-                    <!-- Categories -->
-                    <div class="jeopardy-category">Programming</div>
-                    <div class="jeopardy-category">Hardware</div>
-                    <div class="jeopardy-category">Networking</div>
-                    <div class="jeopardy-category">Security</div>
-                    <div class="jeopardy-category">History</div>
+                <div class="game-container">
+                    <div class="score-display">Score: <span id="score">0</span></div>
                     
-                    <!-- Questions -->
-                    <div class="jeopardy-question" data-value="100" data-answer="A programming language known for its use in web development">$100</div>
-                    <div class="jeopardy-question" data-value="100" data-answer="The brain of the computer">$100</div>
-                    <div class="jeopardy-question" data-value="100" data-answer="A device that connects multiple networks together">$100</div>
-                    <div class="jeopardy-question" data-value="100" data-answer="A type of malicious software">$100</div>
-                    <div class="jeopardy-question" data-value="100" data-answer="The first programmable computer">$100</div>
+                    <div class="map-image" id="location-image">
+                        Location Image Will Appear Here
+                    </div>
                     
-                    <div class="jeopardy-question" data-value="200" data-answer="A loop that never ends">$200</div>
-                    <div class="jeopardy-question" data-value="200" data-answer="Temporary storage for frequently accessed data">$200</div>
-                    <div class="jeopardy-question" data-value="200" data-answer="The protocol used for web browsing">$200</div>
-                    <div class="jeopardy-question" data-value="200" data-answer="The practice of encoding messages to keep them secret">$200</div>
-                    <div class="jeopardy-question" data-value="200" data-answer="The year the World Wide Web was invented">$200</div>
+                    <div class="result-message" id="result-message"></div>
                     
-                    <div class="jeopardy-question" data-value="300" data-answer="A function that calls itself">$300</div>
-                    <div class="jeopardy-question" data-value="300" data-answer="Volatile memory that loses data when power is off">$300</div>
-                    <div class="jeopardy-question" data-value="300" data-answer="A unique identifier for a device on a network">$300</div>
-                    <div class="jeopardy-question" data-value="300" data-answer="A security system that controls incoming and outgoing network traffic">$300</div>
-                    <div class="jeopardy-question" data-value="300" data-answer="The first computer programmer">$300</div>
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be generated by JavaScript -->
+                    </div>
                     
-                    <div class="jeopardy-question" data-value="400" data-answer="A data structure that follows LIFO principle">$400</div>
-                    <div class="jeopardy-question" data-value="400" data-answer="The component that connects all parts of a computer">$400</div>
-                    <div class="jeopardy-question" data-value="400" data-answer="A network that spans a large geographical area">$400</div>
-                    <div class="jeopardy-question" data-value="400" data-answer="The practice of testing systems for vulnerabilities">$400</div>
-                    <div class="jeopardy-question" data-value="400" data-answer="The company that created the first graphical user interface">$400</div>
-                </div>
-                
-                <button id="jeopardyReset">Reset Game</button>
-                
-                <div class="jeopardy-modal" id="jeopardyModal">
-                    <div class="jeopardy-modal-content">
-                        <span class="jeopardy-close" id="jeopardyClose">&times;</span>
-                        <h3>Question: <span id="modalValue"></span></h3>
-                        <p id="modalQuestion"></p>
-                        <h3>Answer:</h3>
-                        <p id="modalAnswer"></p>
-                        <div>
-                            <button id="correctBtn">I got it right!</button>
-                            <button id="wrongBtn">I got it wrong</button>
-                        </div>
+                    <div class="game-controls">
+                        <button class="control-btn" id="next-btn">Next Challenge</button>
+                        <button class="control-btn" id="reset-btn">Reset Game</button>
                     </div>
                 </div>
+                
+                <h3>How to Play</h3>
+                <p>Examine the location image and select the correct country from the options provided. You earn points for each correct answer!</p>
             </article>
 
             <!-- About Me Section -->
             <article id="aboutme">
                 <h2 class="major">About Me</h2>
-                <!-- <span class="image main"><img src="images/" alt="About Me Image" /></span> -->
-                <p>Hi, I'm Moon, a passionate student currently pursuing a Bachelor of Science in Information Technology. I'm deeply fascinated by the world of technology and how it is shaping the future of our world.</p>
-                <p>My journey into IT began with an interest in space and technology. I created this website to reflect both my enthusiasm for IT and my progress in it.</p>
+                <span class="image main"><img src="images/pfp.png" alt="About Me Image" /></span>
+                <p>Hi, I'm Wayne Czar A. Ricaplaza, a passionate student currently pursuing a Bachelor of Science in Information Technology. I'm deeply fascinated by the world of technology and how it is shaping the future of our world.</p>
+                <p>My journey into IT began with an interest in space and technology. I created Shmooniverse to reflect both my enthusiasm for IT and my love for the cosmos. It's a space where creativity meets innovation, and I aim to share that with the world.</p>
+
+                <h3>Inspirations</h3>
+                <ul>
+                    <li><strong>Space and the Universe:</strong> The boundless beauty and mystery of the cosmos inspire me to think beyond limits.</li>
+                    <li><strong>Technology:</strong> The constant evolution of IT motivates me to learn and grow.</li>
+                    <li><strong>Problem Solving:</strong> I enjoy tackling challenges and finding solutions that make a difference.</li>
+                </ul>
 
                 <h3>A Little More About Me</h3>
                 <p>When I'm not working on IT projects, I explore new tech trends, learn about different cultures, and experiment with creative designs. My goal is to continuously improve my skills and contribute meaningfully to the IT field.</p>
@@ -410,104 +281,131 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     
-    <!-- Jeopardy Script -->
+    <!-- GeoGuesser Game Script -->
     <script>
-        // Jeopardy Game Functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if we're on the Jeopardy page
-            if (document.getElementById('jeopardy')) {
-                initJeopardy();
-            }
-        });
-
-        function initJeopardy() {
-            const questions = document.querySelectorAll('.jeopardy-question');
-            const modal = document.getElementById('jeopardyModal');
-            const closeBtn = document.getElementById('jeopardyClose');
-            const modalValue = document.getElementById('modalValue');
-            const modalQuestion = document.getElementById('modalQuestion');
-            const modalAnswer = document.getElementById('modalAnswer');
-            const correctBtn = document.getElementById('correctBtn');
-            const wrongBtn = document.getElementById('wrongBtn');
+            // Game variables
+            let score = 0;
+            let currentChallenge = 0;
+            
+            // DOM elements
             const scoreElement = document.getElementById('score');
-            const resetBtn = document.getElementById('jeopardyReset');
+            const locationImage = document.getElementById('location-image');
+            const optionsContainer = document.getElementById('options-container');
+            const resultMessage = document.getElementById('result-message');
+            const nextBtn = document.getElementById('next-btn');
+            const resetBtn = document.getElementById('reset-btn');
             
-            let currentScore = 0;
-            let currentValue = 0;
-            let currentQuestion = null;
+            // GeoGuesser challenges (location, image URL, options, correct answer)
+            const challenges = [
+                {
+                    location: "Eiffel Tower",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg/800px-Tour_Eiffel_Wikimedia_Commons.jpg",
+                    options: ["France", "Germany", "Italy", "Spain"],
+                    answer: "France"
+                },
+                {
+                    location: "Taj Mahal",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/800px-Taj_Mahal_%28Edited%29.jpeg",
+                    options: ["India", "Pakistan", "Bangladesh", "Nepal"],
+                    answer: "India"
+                },
+                {
+                    location: "Great Wall of China",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/The_Great_Wall_of_China_at_Jinshanling-edit.jpg/800px-The_Great_Wall_of_China_at_Jinshanling-edit.jpg",
+                    options: ["China", "Japan", "South Korea", "Vietnam"],
+                    answer: "China"
+                },
+                {
+                    location: "Statue of Liberty",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Statue_of_Liberty_7.jpg/800px-Statue_of_Liberty_7.jpg",
+                    options: ["USA", "Canada", "UK", "Australia"],
+                    answer: "USA"
+                },
+                {
+                    location: "Pyramids of Giza",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/800px-Kheops-Pyramid.jpg",
+                    options: ["Egypt", "Sudan", "Libya", "Morocco"],
+                    answer: "Egypt"
+                }
+            ];
             
-            // Add click event to each question
-            questions.forEach(question => {
-                question.addEventListener('click', function() {
-                    // Don't do anything if already used
-                    if (this.classList.contains('used')) return;
-                    
-                    currentValue = parseInt(this.getAttribute('data-value'));
-                    const answer = this.getAttribute('data-answer');
-                    const questionText = this.textContent;
-                    
-                    modalValue.textContent = '$' + currentValue;
-                    modalQuestion.textContent = questionText;
-                    modalAnswer.textContent = answer;
-                    
-                    // Store reference to current question
-                    currentQuestion = this;
-                    
-                    // Show modal
-                    modal.style.display = 'flex';
+            // Initialize the game
+            function initGame() {
+                score = 0;
+                currentChallenge = 0;
+                scoreElement.textContent = score;
+                resultMessage.textContent = "";
+                resultMessage.className = "result-message";
+                loadChallenge();
+            }
+            
+            // Load a challenge
+            function loadChallenge() {
+                if (currentChallenge >= challenges.length) {
+                    // Game over, all challenges completed
+                    locationImage.style.backgroundImage = "none";
+                    locationImage.innerHTML = "Congratulations! You completed all challenges!";
+                    optionsContainer.innerHTML = "";
+                    resultMessage.textContent = `Final Score: ${score}/${challenges.length}`;
+                    return;
+                }
+                
+                const challenge = challenges[currentChallenge];
+                
+                // Set the location image
+                locationImage.style.backgroundImage = `url(${challenge.image})`;
+                locationImage.innerHTML = "";
+                
+                // Clear previous options
+                optionsContainer.innerHTML = "";
+                
+                // Create option buttons
+                challenge.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.className = 'option-btn';
+                    button.textContent = option;
+                    button.addEventListener('click', () => checkAnswer(option, challenge.answer));
+                    optionsContainer.appendChild(button);
                 });
-            });
+                
+                // Reset result message
+                resultMessage.textContent = "";
+                resultMessage.className = "result-message";
+            }
             
-            // Close modal
-            closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-            
-            // Correct button
-            correctBtn.addEventListener('click', function() {
-                currentScore += currentValue;
-                scoreElement.textContent = currentScore;
-                
-                // Mark question as used
-                if (currentQuestion) {
-                    currentQuestion.classList.add('used');
-                }
-                
-                modal.style.display = 'none';
-            });
-            
-            // Wrong button
-            wrongBtn.addEventListener('click', function() {
-                currentScore -= currentValue;
-                scoreElement.textContent = currentScore;
-                
-                // Mark question as used
-                if (currentQuestion) {
-                    currentQuestion.classList.add('used');
-                }
-                
-                modal.style.display = 'none';
-            });
-            
-            // Reset button
-            resetBtn.addEventListener('click', function() {
-                // Reset score
-                currentScore = 0;
-                scoreElement.textContent = currentScore;
-                
-                // Reset all questions
-                questions.forEach(question => {
-                    question.classList.remove('used');
+            // Check if the answer is correct
+            function checkAnswer(selected, correct) {
+                // Disable all buttons after selection
+                const buttons = optionsContainer.querySelectorAll('button');
+                buttons.forEach(button => {
+                    button.disabled = true;
                 });
+                
+                if (selected === correct) {
+                    // Correct answer
+                    score++;
+                    scoreElement.textContent = score;
+                    resultMessage.textContent = "Correct! Well done!";
+                    resultMessage.className = "result-message correct";
+                } else {
+                    // Incorrect answer
+                    resultMessage.textContent = `Incorrect! The right answer is ${correct}.`;
+                    resultMessage.className = "result-message incorrect";
+                }
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', () => {
+                currentChallenge++;
+                loadChallenge();
             });
             
-            // Close modal if clicked outside
-            window.addEventListener('click', function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        }
+            resetBtn.addEventListener('click', initGame);
+            
+            // Start the game
+            initGame();
+        });
     </script>
 
 </body>
